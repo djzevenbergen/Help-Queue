@@ -34,6 +34,14 @@ class TicketControl extends React.Component {
     }
   }
 
+  handleAddingNewTicketToList = (newTicket) => {
+    const newMasterTicketList = this.state.masterTicketList.concat(newTicket);
+    this.setState({
+      masterTicketList: newMasterTicketList,
+      formVisibleOnPafe: false
+    });
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
@@ -50,7 +58,7 @@ class TicketControl extends React.Component {
       currentlyVisibleState = <Fifteen />
       buttonText = "Please, I've done it all";
     } else if (this.state.counter == 4) {
-      currentlyVisibleState = <NewTicketForm />
+      currentlyVisibleState = <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList}/>
       buttonText = "Return to List";
     }
 
