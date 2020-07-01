@@ -12,6 +12,7 @@ class TicketControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
+      masterTicketList: [],
       counter: 0
 
     };
@@ -33,11 +34,19 @@ class TicketControl extends React.Component {
     }
   }
 
+  handleAddingNewTicketToList = (newTicket) => {
+    const newMasterTicketList = this.state.masterTicketList.concat(newTicket);
+    this.setState({
+      masterTicketList: newMasterTicketList,
+      formVisibleOnPafe: false
+    });
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.counter == 0) {
-      currentlyVisibleState = <TicketList />
+      currentlyVisibleState = <TicketList ticketList={this.state.masterTicketList}/>
       buttonText = "Add ticket!";
     } else if (this.state.counter == 1) {
       currentlyVisibleState = <Help />
@@ -49,18 +58,10 @@ class TicketControl extends React.Component {
       currentlyVisibleState = <Fifteen />
       buttonText = "Please, I've done it all";
     } else if (this.state.counter == 4) {
-      currentlyVisibleState = <NewTicketForm />
+      currentlyVisibleState = <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList}/>
       buttonText = "Return to List";
     }
 
-
-    // else if (this.state.formVisibleOnPage) {
-    //   currentlyVisibleState = <NewTicketForm />
-    //   buttonText = "Return to Ticket List!";
-    // } else {
-    //   currentlyVisibleState = <TicketList />
-    //   buttonText = "Add ticket!";
-    // }
     return (
       <React.Fragment>
         {currentlyVisibleState}
