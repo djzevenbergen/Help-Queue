@@ -12,6 +12,7 @@ class TicketControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
+      masterTicketList: [],
       counter: 0
 
     };
@@ -37,7 +38,7 @@ class TicketControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.counter == 0) {
-      currentlyVisibleState = <TicketList />
+      currentlyVisibleState = <TicketList ticketList={this.state.masterTicketList}/>
       buttonText = "Add ticket!";
     } else if (this.state.counter == 1) {
       currentlyVisibleState = <Help />
