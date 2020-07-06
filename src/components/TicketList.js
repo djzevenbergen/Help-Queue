@@ -8,7 +8,7 @@ import TicketDetail from './TicketDetail';
 function TicketList(props) {
   return (
     <React.Fragment>
-      <hr />
+
       {Object.values(props.ticketList).map((ticket) => {
         return <Ticket
           whenTicketClicked={props.onTicketSelection}
