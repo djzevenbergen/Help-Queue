@@ -36,7 +36,6 @@ class TicketControl extends React.Component {
       // }));
     }
   }
-
   handleAddingNewTicketToList = (newTicket) => {
     const { dispatch } = this.props;
     const { id, names, location, issue } = newTicket;
@@ -52,7 +51,6 @@ class TicketControl extends React.Component {
       type: 'TOGGLE_FORM'
     }
     dispatch(action2);
-    // this.setState({ formVisibleOnPage: false });
   }
 
   handleChangingSelectedTicket = (id) => {
@@ -128,7 +126,7 @@ TicketControl.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    masterTicketList: state,
+    masterTicketList: state.masterTicketList,
     formVisibleOnPage: state.formVisibleOnPage
   }
 }
