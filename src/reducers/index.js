@@ -8,6 +8,4 @@ const rootReducer = combineReducers(
     masterTicketList: ticketListReducer
   });
 
-
-
 export default rootReducer;
